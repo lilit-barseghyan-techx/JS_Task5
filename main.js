@@ -32,11 +32,13 @@ async function fetchUsers(includeHeader, statusEl, outputEl) {
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
+    const fullNames = data.data.map((u) => `${u.first_name} ${u.last_name}`);
+
     const ul = document.createElement("ul");
 
-    data.data.forEach((u) => {
+    fullNames.forEach((name) => {
       const li = document.createElement("li");
-      li.textContent = `${u.first_name} ${u.last_name}`;
+      li.textContent = name;
       ul.appendChild(li);
     });
 
